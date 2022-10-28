@@ -40,7 +40,7 @@ bool compare0(point p1, point p2){
     return p1.x[0]<p2.x[0];
 }
 
-//distance of two points in D-dimensional space
+//Distance between two points in D-dimensional space
 double dist(point p1, point p2)
 {
     int dist = 0, D = p1.x.size();
@@ -50,8 +50,7 @@ double dist(point p1, point p2)
     return sqrt(dist);
 }
 
-//Brute force solution used to solve for 2 or 3 points
-//and to compare with Divide and conquer solution
+//Brute Force solution used to find minimum distance for 2 or 3 points
 double closestPairBrute(vector <point> &P){
     int i, j, N=P.size();
     double distance, minimum = INF;
@@ -64,7 +63,7 @@ double closestPairBrute(vector <point> &P){
     return minimum;
 }
 
-//sort P vector with 2-3 elements by dimension d
+//Sort P vector with 2 or 3 elements by dimension d
 void Vsort(vector <point> &P, int d){
     int N=P.size();
     int i, j;
@@ -79,7 +78,7 @@ void Vsort(vector <point> &P, int d){
             }
 }
 
-//merge v1 and v2 into v, sorted by coordinate d
+//Merge v1 and v2 into v, sorted by coordinate d
 void merge(vector <point> &v1, vector <point> &v2, vector <point> &v, int d){
 
     int N1 = v1.size(), N2 = v2.size();  //size of each vector
@@ -99,7 +98,7 @@ void merge(vector <point> &v1, vector <point> &v2, vector <point> &v, int d){
     while (i2 < N2) v[i++] = v2[i2++];
 }
 
-/*recursive function that calculates the minimum distance
+/*Recursive function that calculates the minimum distance
 N is the number of points in the current subproblem
 d is the current coordinate
 D is the number of dimensions
@@ -134,9 +133,9 @@ double closestUtil(vector <point> &P, int d, double minDist){
             }
             return minimum;
         }
-        /* Pick all points one by one and try the next points while the difference
-           between coordinates is smaller than minDist.
-           This loop runs O(1) times*/
+        /* General case: Pick all points one by one and try the next points while 
+           the difference between coordinates is smaller than minDist.
+           This loop runs O(1) times */
         for (int i = 0; i < N-1; i++){
             for (int j = i+1; j < N && (P[j].x[d] - P[i].x[d]) < minDist; j++){
                 distance = dist(P[i],P[j]);
@@ -192,9 +191,9 @@ double closestPairDim(vector <point> &P, int D){
 
 
 
-/*Driver program that tests speed and correctness
-Input: On the first line integers N and D
-On the following N lines, D space seperated doubles*/
+/* Driver program that tests speed and correctness
+   Input: On the first line integers N and D
+   On the following N lines, D space seperated doubles*/
 int main(){
     //Redirect cin to input file
     ifstream in("ClosestPairDim-In.txt");
