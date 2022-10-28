@@ -192,9 +192,11 @@ double closestPairDim(vector <point> &P, int D){
 
 
 
-//driver program that tests speed and correctness
+/*Driver program that tests speed and correctness
+Input: On the first line integers N and D
+On the following N lines, D space seperated doubles*/
 int main(){
-    //redirect cin to in.txt
+    //Redirect cin to input file
     ifstream in("ClosestPairDim-In.txt");
     cin.rdbuf(in.rdbuf());
 
@@ -226,7 +228,7 @@ int main(){
 
     start = high_resolution_clock::now();   
 
-    //We call the closestPair function here
+    //We call the closestPairDim function here
     cout<<"DAC found: "<<closestPairDim(P, D)<<endl;
 
     //chronometer
