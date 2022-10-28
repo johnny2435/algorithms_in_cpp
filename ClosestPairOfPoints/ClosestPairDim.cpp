@@ -1,13 +1,3 @@
-/*  The closestPairDim function uses divide and conquer to
-    find the distance between the closest pair of points.
-    The recursive formula for D>2 is:
-    T(n,d)=2T(n/2,d)+T(n,d-1)+O(n) ,d>1
-    T(n,1)=O(n)
-    which gives a total time complexity of O(n*(logn)^(D-1)).
-    (Note that this can be improved to O(nlogn) by selecting
-    the midPoint in a smarter way.)
-*/
-
 #include <iostream>
 #include <utility>
 #include <vector>
